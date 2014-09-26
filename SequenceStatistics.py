@@ -29,12 +29,10 @@ __name__ ='SequenceStatistics.py'
 import sys
 FileName = sys.argv[1]
 try :
-   
-
-print ("SeqName\tSeqlen\tGC%\tCountA\tCountT\tCountG\tCountC\tCountN\tCountR\tCountY\tCountM\tCountK\tCountS\tCountW\tCountB\tCountD\tCountH\tCountV\tCountG+C\tCountA+T")
-from Bio import SeqIO
-for seq_record in SeqIO.parse(FileName, "fasta"): # CHANGE THE FILE INPUT HERE
-    seq_record.upper()
+    print("SeqName\tSeqlen\tGC%\tCountA\tCountT\tCountG\tCountC\tCountN\tCountR\tCountY\tCountM\tCountK\tCountS\tCountW\tCountB\tCountD\tCountH\tCountV\tCountG+C\tCountA+T")
+    from Bio import SeqIO
+    for seq_record in SeqIO.parse(FileName, "fasta"): # CHANGE THE FILE INPUT HERE
+    	seq_record.upper()
 	CountA = seq_record.seq.count("A")
 	CountT= seq_record.seq.count("T")
 	CountG= seq_record.seq.count("G")
@@ -53,14 +51,14 @@ for seq_record in SeqIO.parse(FileName, "fasta"): # CHANGE THE FILE INPUT HERE
 	CountGplusC= seq_record.seq.count("G")+seq_record.seq.count("C")
 	CountAplusT= seq_record.seq.count("A")+ seq_record.seq.count("T")
 	SeqLen=len(seq_record)
-	#pGC=(((CountG) +(CountC))/len(seq_record))*100
 	pGC=((CountGplusC)*100/(SeqLen))
-print (seq_record.id,"\t",SeqLen,"\t",pGC,"\t",CountA,"\t",CountT,"\t",CountG,"\t",CountC,"\t",CountN,"\t",CountR,"\t",CountY,"\t",CountM,"\t",CountK,"\t",CountS,"\t",CountW,"\t",CountB,"\t",CountD,"\t",CountH,"\t",CountV,"\t",CountGplusC,"\t",CountAplusT ) #,"\t",seq_record.seq
-
+	print (seq_record.id,SeqLen,pGC,CountA,CountT,CountG,CountC,CountN,CountR,CountY,CountM,CountK,CountS,CountW,CountB,CountD,CountH,CountV,CountGplusC,CountAplusT,"\n") #,"\t",seq_record.seq
+except:
+    pass
 def main():
     return 0
 
-if __name__ == ‘__main__':
-main()
+if __name__ == '__main__':
+	main()
 
 

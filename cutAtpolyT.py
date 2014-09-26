@@ -22,9 +22,8 @@
 #  REQUIREMENTS none
 #
 #
-
-'__version__' = 0.1
-'__author__' = 'roshan padmanabhan'
+__version__ = 0.1
+__author__ = 'roshan padmanabhan'
 
 '''
 Purpose is to cut the sequences at polyT
