@@ -73,16 +73,14 @@ def makedict(fileAsList):
 
 def main():
 	# open file
+	#fq= open('data/R1.fastq','r')
 	fq = openFile().readlines() 
 	
 	# making dict 
 	d = makedict(fq)	
 	
-	# new dict
-	r2d2 = {key: value for (key, value) in d.items() if value == '***'}		
-	
 	# here I got the empty lines
-	emptyLine = list(r2d2.keys())
+	emptyLine = [key for (key, value) in d.items() if value == '***']
 	print("EmptyLines : ", emptyLine)
 	
 	# get the above line
