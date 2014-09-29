@@ -64,11 +64,11 @@ def makedict(fileAsList):
 	'''
 	dict={}
 	for e , line in enumerate(fileAsList):
-		f3 = line[0:3]
+		f3 = line[0]
 		if re.match('^\n',f3) :
-			dict[e] = '***' ###this is just to visually 
+			dict[e] = '*' ###this is just to visually 
 		else :
-			dict[e] = line[0:3]
+			dict[e] = line[0]
 	return dict
 
 def main():
@@ -80,7 +80,7 @@ def main():
 	d = makedict(fq)	
 	
 	# here I got the empty lines
-	emptyLine = [key for (key, value) in d.items() if value == '***']
+	emptyLine = [key for (key, value) in d.items() if value == '*']
 	print("EmptyLines : ", emptyLine)
 	
 	# get the above line
@@ -97,8 +97,8 @@ def main():
 	
 	# write to a new file
 	# change this
-	wfname = "newfastq"  
-	#wfname = sys.argv[2]  # if a name is not given it will give error , have to modify later
+	#wfname = "newfastq"  
+	wfname = sys.argv[2]  # if a name is not given it will give error , have to modify later
 	
 	with open(wfname, "wt") as out_file:
 		out_file.write(''.join(str(line) for line in nfq))
